@@ -16,6 +16,25 @@ namespace App\Controller;
 
 use Cake\Controller\Controller;
 use Cake\Event\Event;
+use Cake\Database\Type;
+
+// Habilita o parseamento de datas localizadas
+Type::build('date')
+ ->useLocaleParser()
+ ->setLocaleFormat('dd/MM/yyyy');
+Type::build('datetime')
+ ->useLocaleParser()
+ ->setLocaleFormat('dd/MM/yyyy HH:mm:ss');
+Type::build('timestamp')
+ ->useLocaleParser()
+ ->setLocaleFormat('dd/MM/yyyy HH:mm:ss');
+ 
+// Habilita o parseamento de decimal localizaddos
+Type::build('decimal')
+ ->useLocaleParser();
+Type::build('float')
+ ->useLocaleParser();
+
 
 /**
  * Application Controller
@@ -29,8 +48,9 @@ class AppController extends Controller
 {
 
 
+
     public $paginate = [
-        'limit' => 5,
+        'limit' => 6,
     ];
 
     /**

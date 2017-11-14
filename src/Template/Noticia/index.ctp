@@ -4,58 +4,6 @@
   */
 ?>
 
-
-  <!-- Left side column. contains the logo and sidebar -->
-  <aside class="main-sidebar">
-
-    <!-- sidebar: style can be found in sidebar.less -->
-    <section class="sidebar">
-
-      <!-- Sidebar user panel (optional) -->
-      <div class="user-panel">
-        <div class="pull-left image">
-          <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
-        </div>
-        <div class="pull-left info">
-          <p>Opções de Filtro</p>
-        </div>
-      </div>
-
-      <!-- search form (Optional) -->
-      <form action="#" method="get" class="sidebar-form">
-        <div class="input-group">
-          <input type="text" name="q" class="form-control" placeholder="Descrição">
-          <span class="input-group-btn">
-              <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
-              </button>
-            </span>
-        </div>
-      </form>
-      <!-- /.search form -->
-
-      <!-- Sidebar Menu -->
-      <ul class="sidebar-menu" data-widget="tree">
-        <li class="header">OPÇÕES</li>
-        <!-- Optionally, you can add icons to the links -->
-        <li class="active">
-            <?= $this->Html->link('<i class="fa fa-plus-square"></i> <span>Adicionar</span>', ['action' => 'add'], array('escape' => false, 'title'=> 'Adicionar')) ?>
-        </li>
-        </li>
-      </ul>
-      <!-- /.sidebar-menu -->
-    </section>
-    <!-- /.sidebar -->
-  </aside>
-
-
-
-
-
-
-
-
-
-
 <div class="row">
     <div class="col-md-12">
       <div class="box">
@@ -75,7 +23,7 @@
           <th style="width: 10px"><?= $this->Paginator->sort('id','#') ?></th>
           <th><?= $this->Paginator->sort('Descricao') ?></th>
           <th><?= $this->Paginator->sort('Data') ?></th>
-          <th><?= __('Ação') ?></th>
+          <th><?= __('Ações') ?></th>
       </tr>
 
       <?php foreach ($noticia as $noticium): ?>
@@ -85,18 +33,21 @@
             <td><?= h($noticium->Data) ?></td>
             <td class="actions" width="12%;" align="center">
                 <div class="pull-center">
+
+                <!--Icone visualizar -->
                 <?php echo $this->Html->link(
                     '<button type="button" class="btn btn-default btn-sm"><i class="fa fa-search"></i></button>',
                     array('action' => 'view', $noticium->id),
                     array('escape' => false, 'title'=>'Visualizar') // This line will parse rather then output HTML
                 ); ?>
-
+                <!--Icone Editar -->
                 <?php echo $this->Html->link(
                     '<button type="button" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i></button>',
                     array('action' => 'edit', $noticium->id),
                     array('escape' => false, 'title'=>'Editar') // This line will parse rather then output HTML
                 ); ?>
 
+                <!--Icone Ecluir -->
                  <?php echo $this->Form->postLink(
                     '<button type="button" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></button>',
                     array('action' => 'delete', $noticium->id),
